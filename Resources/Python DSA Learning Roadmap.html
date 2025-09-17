@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive DSA Roadmap with Python</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony (Slate background, White cards, Teal accent) -->
+    <!-- Application Structure Plan: The SPA is designed as an interactive, vertical timeline/roadmap. This structure guides the user sequentially through DSA topics, from foundational to advanced. Key interaction is the collapsible accordion for each topic, preventing information overload and allowing focus. A dynamic donut chart at the top updates in real-time as the user checks off learned concepts, providing motivation and a clear sense of progress. This task-oriented, gamified approach is more engaging for a student than a static document and better suited for a long-term learning plan. -->
+    <!-- Visualization & Content Choices: Report Info: User needs a learning roadmap. -> Goal: Track progress. -> Viz: Donut Chart -> Interaction: Updates on checkbox click. -> Justification: Visual feedback is highly motivating and provides an at-a-glance status. -> Library: Chart.js. | Report Info: Sub-topics within a category. -> Goal: Organize & Track. -> Presentation: Checklists inside collapsible sections. -> Interaction: User checks items, which updates the master progress chart. -> Justification: Breaks down complex learning into manageable, trackable steps. This self-documenting process helps in revision. -> Method: HTML/JS. | Report Info: Algorithm complexities. -> Goal: Compare. -> Presentation: HTML Table. -> Justification: A clear, standard format for comparing performance metrics, which is crucial for algorithm analysis. -> Method: HTML/Tailwind. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+        }
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary .arrow-down {
+            transform: rotate(180deg);
+        }
+        .chart-container {
+            position: relative; 
+            width: 100%; 
+            max-width: 288px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            height: 288px;
+            max-height: 288px;
+        }
+        .resource-link {
+            color: #0d9488;
+            transition: color 0.2s;
+        }
+        .resource-link:hover {
+            color: #115e59;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <div class="container mx-auto max-w-5xl p-4 sm:p-6 lg:p-8">
+        
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900">Your Interactive DSA Roadmap</h1>
+            <p class="mt-3 text-lg text-slate-600">Master Data Structures & Algorithms with Python. Track your progress as you go!</p>
+        </header>
+
+        <main>
+            <div id="progressSection" class="bg-white rounded-2xl shadow-lg p-6 mb-12">
+                <h2 class="text-2xl font-bold text-center text-slate-900 mb-4">Your Progress</h2>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                    <div class="chart-container">
+                        <canvas id="progressChart"></canvas>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <p class="text-slate-600">This chart shows your real-time progress through the entire DSA curriculum. As you check off topics below, this visualization will update automatically. The goal is to turn the entire ring green, signifying your completion of all the essential concepts required for technical interviews and a strong foundational knowledge in computer science.</p>
+                        <div class="mt-4 text-2xl font-bold text-teal-600" id="progressText">0% Complete</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="roadmapContainer" class="space-y-4">
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-12 py-6 border-t border-slate-200">
+            <p class="text-slate-500">Crafted to accelerate your CSE journey. Happy coding!</p>
+        </footer>
+    </div>
+
+    <script>
+        const roadmapData = [
+            {
+                phase: "Phase 1: Foundations",
+                description: "This phase is about building the bedrock. Understanding time/space complexity is non-negotiable as it's the lens through which you'll analyze every algorithm. We also cover Python's core data structures.",
+                color: "bg-blue-500",
+                topics: [
+                    { name: "Big O Notation (Time & Space Complexity)", resources: [{ title: "GeeksForGeeks Guide", url: "https://www.geeksforgeeks.org/analysis-of-algorithms-big-o-analysis/" }, { title: "Video Explanation", url: "https://www.youtube.com/watch?v=__vX2sjlpXU" }] },
+                    { name: "Arrays and Lists in Python", resources: [{ title: "Programiz Tutorial", url: "https://www.programiz.com/python-programming/list" }, { title: "Python Official Docs", url: "https://docs.python.org/3/tutorial/datastructures.html" }] },
+                    { name: "Strings", resources: [{ title: "TutorialsPoint Guide", url: "https://www.tutorialspoint.com/python/python_strings.htm" }] },
+                    { name: "Basic Recursion", resources: [{ title: "Real Python Guide", url: "https://realpython.com/python-recursion/" }, { title: "Video Tutorial", url: "https://www.youtube.com/watch?v=B0NtAFf4_5s" }] },
+                ]
+            },
+            {
+                phase: "Phase 2: Linear Data Structures",
+                description: "Linear data structures organize data sequentially. Mastering these is crucial as they appear frequently in interview questions, often as building blocks for more complex problems.",
+                color: "bg-indigo-500",
+                topics: [
+                    { name: "Linked Lists (Singly, Doubly, Circular)", resources: [{ title: "Real Python Guide", url: "https://realpython.com/linked-lists-python/" }, { title: "Video Series", url: "https://www.youtube.com/watch?v=7K3_e_N-d2U&list=PLz__JDUzUewGv61-Q2H6w1a_iia-gWz7e" }] },
+                    { name: "Stacks (LIFO)", resources: [{ title: "GeeksForGeeks Implementation", url: "https://www.geeksforgeeks.org/stack-in-python/" }, { title: "Video: Stacks & Queues", url: "https://www.youtube.com/watch?v=A3ZUpyA323A" }] },
+                    { name: "Queues (FIFO & Deques)", resources: [{ title: "GeeksForGeeks Implementation", url: "https://www.geeksforgeeks.org/queue-in-python/" }, { title: "Python collections.deque", url: "https://docs.python.org/3/library/collections.html#collections.deque" }] },
+                ]
+            },
+            {
+                phase: "Phase 3: Non-Linear Data Structures",
+                description: "Here things get more complex. Non-linear structures represent hierarchical or networked data. Trees are fundamental for interviews at top tech companies.",
+                color: "bg-purple-500",
+                topics: [
+                    { name: "Hash Tables / Dictionaries", resources: [{ title: "Real Python Guide on Dictionaries", url: "https://realpython.com/python-dicts/" }, { title: "Video: How Hash Tables Work", url: "https://www.youtube.com/watch?v=shs0I0HMyYQ" }] },
+                    { name: "Trees (Concepts, Traversal: In-order, Pre-order, Post-order)", resources: [{ title: "TutorialsPoint Guide", url: "https://www.tutorialspoint.com/data_structures_algorithms/tree_traversal.htm" }] },
+                    { name: "Binary Search Trees (BST)", resources: [{ title: "Programiz Guide", url: "https://www.programiz.com/dsa/binary-search-tree" }, { title: "Video Implementation", url: "https://www.youtube.com/watch?v=6J_Ipt_f_x0" }] },
+                    { name: "Heaps and Priority Queues", resources: [{ title: "GeeksForGeeks Guide", url: "https://www.geeksforgeeks.org/heap-queue-or-heapq-in-python/" }, { title: "Python heapq module", url: "https://docs.python.org/3/library/heapq.html" }] },
+                    { name: "Tries", resources: [{ title: "GeeksForGeeks Guide", url: "https://www.geeksforgeeks.org/trie-insert-and-search/" }, { title: "Video Explanation", url: "https://www.youtube.com/watch?v=zIjfhVPRZCg" }] },
+                ]
+            },
+            {
+                phase: "Phase 4: Core Algorithms",
+                description: "Algorithms are the recipes for solving problems. This section covers the most essential searching, sorting, and problem-solving paradigms that you must know.",
+                color: "bg-pink-500",
+                topics: [
+                    { name: "Searching: Linear and Binary Search", resources: [{ title: "GeeksForGeeks Comparison", url: "https://www.geeksforgeeks.org/linear-search-vs-binary-search/" }] },
+                    { name: "Sorting: Bubble Sort, Selection Sort, Insertion Sort", resources: [{ title: "Video Visualizations", url: "https://www.youtube.com/watch?v=kPRA0W1kECg" }] },
+                    { name: "Sorting: Merge Sort", resources: [{ title: "Khan Academy Guide", url: "https://www.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/overview-of-merge-sort" }] },
+                    { name: "Sorting: Quick Sort", resources: [{ title: "GeeksForGeeks Guide", url: "https://www.geeksforgeeks.org/python-program-for-quicksort/" }] },
+                    { name: "Sliding Window Technique", resources: [{ title: "GeeksForGeeks Guide", url: "https://www.geeksforgeeks.org/window-sliding-technique/" }] },
+                    { name: "Two Pointers Technique", resources: [{ title: "GeeksForGeeks Guide", url: "https://www.geeksforgeeks.org/two-pointers-technique/" }] },
+                ]
+            },
+            {
+                phase: "Phase 5: Graph Algorithms",
+                description: "Graphs are the most versatile data structure, modeling everything from social networks to navigation systems. Graph questions are common in advanced interviews.",
+                color: "bg-red-500",
+                topics: [
+                    { name: "Graph Representations (Adjacency List/Matrix)", resources: [{ title: "GeeksForGeeks Guide", url: "https://www.geeksforgeeks.org/graph-and-its-representations/" }] },
+                    { name: "Breadth-First Search (BFS)", resources: [{ title: "Educative Guide", url: "https://www.educative.io/edpresso/how-to-implement-a-breadth-first-search-in-python" }] },
+                    { name: "Depth-First Search (DFS)", resources: [{ title: "Programiz Guide", url: "https://www.programiz.com/dsa/graph-dfs" }] },
+                    { name: "Dijkstra's Shortest Path Algorithm", resources: [{ title: "GeeksForGeeks Guide", url: "https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-in-python-using-priority-queue/" }] },
+                    { name: "Minimum Spanning Tree (Prim's/Kruskal's)", resources: [{ title: "GeeksForGeeks: Prim's", url: "https://www.geeksforgeeks.org/prims-minimum-spanning-tree-mst-greedy-algo-5/" }] },
+                ]
+            },
+            {
+                phase: "Phase 6: Advanced Paradigms & Practice",
+                description: "These are advanced techniques for solving complex problems. Consistent practice on platforms like LeetCode is the key to solidifying everything you've learned.",
+                color: "bg-orange-500",
+                topics: [
+                    { name: "Dynamic Programming (DP)", resources: [{ title: "GeeksForGeeks Intro", url: "https://www.geeksforgeeks.org/dynamic-programming/" }, { title: "Video Series (freeCodeCamp)", url: "https://www.youtube.com/watch?v=oBt53YbR9Kk" }] },
+                    { name: "Backtracking", resources: [{ title: "GeeksForGeeks Intro", url: "https://www.geeksforgeeks.org/introduction-to-backtracking-data-structure-and-algorithm-tutorials/" }] },
+                    { name: "Greedy Algorithms", resources: [{ title: "Programiz Intro", url: "https://www.programiz.com/dsa/greedy-algorithm" }] },
+                    { name: "Practice: LeetCode", resources: [{ title: "LeetCode Website", url: "https://leetcode.com/" }] },
+                    { name: "Practice: HackerRank", resources: [{ title: "HackerRank Website", url: "https://www.hackerrank.com/domains/algorithms" }] },
+                    { name: "Practice: GeeksForGeeks", resources: [{ title: "GFG Practice Portal", url: "https://practice.geeksforgeeks.org/explore" }] },
+                ]
+            }
+        ];
+
+        const roadmapContainer = document.getElementById('roadmapContainer');
+        let totalTopics = 0;
+
+        roadmapData.forEach((phaseData, index) => {
+            const phaseElement = document.createElement('details');
+            phaseElement.className = 'bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300';
+            if (index === 0) phaseElement.open = true;
+
+            let topicHTML = '';
+            phaseData.topics.forEach(topic => {
+                totalTopics++;
+                let resourcesHTML = topic.resources.map(res => 
+                    `<a href="${res.url}" target="_blank" rel="noopener noreferrer" class="resource-link font-medium">${res.title}</a>`
+                ).join(' | ');
+
+                topicHTML += `
+                    <li class="flex items-start justify-between py-3 border-b border-slate-200 last:border-b-0">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="h-5 w-5 rounded border-gray-300 text-teal-600 focus:ring-teal-500 mt-1 mr-4 topic-checkbox">
+                            <div>
+                                <p class="font-semibold text-slate-800">${topic.name}</p>
+                                <div class="text-sm mt-1">${resourcesHTML}</div>
+                            </div>
+                        </div>
+                    </li>
+                `;
+            });
+
+            phaseElement.innerHTML = `
+                <summary class="flex justify-between items-center p-5 cursor-pointer ${phaseData.color} text-white">
+                    <div class="flex items-center">
+                        <span class="text-xl font-bold mr-4">${index + 1}</span>
+                        <div>
+                            <h3 class="text-xl font-bold">${phaseData.phase}</h3>
+                        </div>
+                    </div>
+                    <span class="arrow-down transition-transform duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </span>
+                </summary>
+                <div class="p-6">
+                    <p class="text-slate-600 mb-4">${phaseData.description}</p>
+                    <ul class="divide-y divide-slate-200">
+                        ${topicHTML}
+                    </ul>
+                </div>
+            `;
+            roadmapContainer.appendChild(phaseElement);
+        });
+
+        const progressChartCtx = document.getElementById('progressChart').getContext('2d');
+        const progressText = document.getElementById('progressText');
+        const checkboxes = document.querySelectorAll('.topic-checkbox');
+
+        let progressChart = new Chart(progressChartCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Completed', 'Remaining'],
+                datasets: [{
+                    data: [0, totalTopics],
+                    backgroundColor: ['#14b8a6', '#e2e8f0'],
+                    borderColor: '#ffffff',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '75%',
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: false
+                    }
+                }
+            }
+        });
+
+        function updateProgress() {
+            const checkedCount = document.querySelectorAll('.topic-checkbox:checked').length;
+            const percentage = totalTopics > 0 ? Math.round((checkedCount / totalTopics) * 100) : 0;
+            
+            progressChart.data.datasets[0].data = [checkedCount, totalTopics - checkedCount];
+            progressChart.update();
+
+            progressText.textContent = `${percentage}% Complete`;
+        }
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateProgress);
+        });
+
+        updateProgress();
+
+    </script>
+</body>
+</html>

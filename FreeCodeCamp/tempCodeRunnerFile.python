@@ -1,0 +1,36 @@
+class Solution:
+    
+    def isAnagram(self , s: str , p: str , i , j) -> bool:
+        result = []
+        print(i , s[i:j])
+        
+        if len(s[i:j]) < len(p):
+            return result
+        
+        x = s[i:j]
+        temp = list(p)
+        for _ in x:
+            if _ in temp:
+                temp.remove(_)
+            else:
+                break
+        else:
+            result = [i]
+        
+        return result + self.isAnagram(s,p,i+1,j+1)
+
+         
+    
+    def findAnagrams(self, s: str, p: str) -> list[int]:
+        n2 = len(p)
+
+        result = self.isAnagram(s , p , 0 , n2)
+        
+        return result
+        
+
+sol = Solution()
+
+result = sol.findAnagrams("abab" , "ab")
+# result = sol.findAnagrams("cbaebabacd" , "abc")
+print("result: " , result)
