@@ -1,0 +1,27 @@
+
+1. Arrays (Lists)
+    Two Pointers                                                -> Done
+    Sliding Window                                              -> Done
+
+2. Stacks
+    Stack                                                       -> Done
+    Min Stack                                                   -> Done
+    Two Stacks in One Array                                     -> Done
+    Stack Using Queues                                          -> Done
+    K Stacks in a Single Array
+    Stack with Middle Element Access (Use Double Linked List)   -> Done
+
+3. Queues
+    Linear Queue                                                -> Done
+    Circular Queue                                              -> Done
+    Deque (Double-Ended)                                        -> Done
+    Queue using Stack                                           -> Done
+
+4. Hashing
+5. Linked Lists
+6. Binary Search
+7. Tree
+8. Heaps (Priority Queues)
+9. Back Tracking
+10. Graphs
+11. Dynamic Programming
