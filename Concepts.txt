@@ -18,7 +18,17 @@
     Queue using Stack                                           -> Done
 
 4. Hashing
+    Hashmap (using dictionaries)                                -> Done
+    Hashsets (using sets)                                       -> Done
+    Hashing Strings                                             -> Done
+    Custom Hashing for Tuples or Complex Key                    -> Done
+
 5. Linked Lists
+    Singly Linked List                                          -> Done
+    Doubly Linked List                                          -> Done
+    Circular Linked List                                        -> Done
+    Unrolled Linked List
+
 6. Binary Search
 7. Tree
 8. Heaps (Priority Queues)
