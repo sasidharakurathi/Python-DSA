@@ -1,35 +1,40 @@
 
 1. Arrays (Lists)
-    Two Pointers                                                -> Done
-    Sliding Window                                              -> Done
+    Two Pointers                                                                            -> Done
+    Sliding Window                                                                          -> Done
 
 2. Stacks
-    Stack                                                       -> Done
-    Min Stack                                                   -> Done
-    Two Stacks in One Array                                     -> Done
-    Stack Using Queues                                          -> Done
+    Stack                                                                                   -> Done
+    Min Stack                                                                               -> Done
+    Two Stacks in One Array                                                                 -> Done
+    Stack Using Queues                                                                      -> Done
     K Stacks in a Single Array
-    Stack with Middle Element Access (Use Double Linked List)   -> Done
+    Stack with Middle Element Access (Use Double Linked List)                               -> Done
 
 3. Queues
-    Linear Queue                                                -> Done
-    Circular Queue                                              -> Done
-    Deque (Double-Ended)                                        -> Done
-    Queue using Stack                                           -> Done
+    Linear Queue                                                                            -> Done
+    Circular Queue                                                                          -> Done
+    Deque (Double-Ended)                                                                    -> Done
+    Queue using Stack                                                                       -> Done
 
 4. Hashing
-    Hashmap (using dictionaries)                                -> Done
-    Hashsets (using sets)                                       -> Done
-    Hashing Strings                                             -> Done
-    Custom Hashing for Tuples or Complex Key                    -> Done
+    Hashmap (using dictionaries)                                                            -> Done
+    Hashsets (using sets)                                                                   -> Done
+    Hashing Strings                                                                         -> Done
+    Custom Hashing for Tuples or Complex Key                                                -> Done
 
 5. Linked Lists
-    Singly Linked List                                          -> Done
-    Doubly Linked List                                          -> Done
-    Circular Linked List                                        -> Done
+    Singly Linked List                                                                      -> Done
+    Doubly Linked List                                                                      -> Done
+    Circular Linked List                                                                    -> Done
     Unrolled Linked List
 
 6. Binary Search
+    Standard Binary Search – Find an element in a sorted array.                             -> Done
+    Lower Bound / Upper Bound – First element ≥ target / First element > target.            -> Done
+    Search Insert Position – Where to insert an element to keep array sorted.               -> Done
+    First and Last Occurrence – Especially useful for duplicates.                           -> Done
+
 7. Tree
 8. Heaps (Priority Queues)
 9. Back Tracking
