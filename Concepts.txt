@@ -36,7 +36,30 @@
     First and Last Occurrence – Especially useful for duplicates.                           -> Done
 
 7. Tree
+    Binary Tree
+        Types:
+            1. Full Binary Tree         - (Every node must have 0 or 2 Child nodes)
+            2. Perfect Binary Tree      - (it is a Full Binary Tree + all the leaf nodes should be in same level)
+            3. Complete Binary Tree     - (all the levels of the tree are filled completely except the lowest level nodes which are filled from as left as possible)
+            4. Degenerate Binary        - (Every node must have 0 or 1 Child nodes)  
+            5. Skewed Tree              - (Every node must have 0 or 1 Child nodes + all childs should be left or right of root node)
+            6. Balanced Binary          - (Difference of all the 'left subtree and right subtree' should be in [-1,0,1] only)  
+
+
+    Binary Search Tree (BST)
+
+    Traversals:
+        -> use inorder traversal for Binary Search Tree Validation          -   (implemented using stack or recursion)
+        -> use preorder traversal for tree cloning or expression trees      -   (implemented using stack or recursion)
+        -> use postorder traversal for deletion or evaluation               -   (implemented using stack or recursion)
+        -> use level order traversal for shortest path or tree width        -   (implemented using queue)
+
+
+
+
+
 8. Heaps (Priority Queues)
 9. Back Tracking
 10. Graphs
 11. Dynamic Programming
+12. Tries

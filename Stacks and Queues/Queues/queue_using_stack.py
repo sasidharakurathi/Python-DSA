@@ -13,7 +13,7 @@ class QueueUsingStacks:
         if not self.stack2:
             while self.stack1:
                 self.stack2.append(self.stack1.pop())
-        if not self.stack:
+        if not self.stack2:
             print("Queue underflow")
             return
     
