@@ -36,7 +36,11 @@
     First and Last Occurrence – Especially useful for duplicates.                           -> Done
 
 7. Tree
-    Binary Tree
+
+    Resources:
+        https://youtu.be/W2WQBT8qu3Q?si=_lWjKYoiRCcLU18O
+
+    1. Binary Tree
         Types:
             1. Full Binary Tree         - (Every node must have 0 or 2 Child nodes)
             2. Perfect Binary Tree      - (it is a Full Binary Tree + all the leaf nodes should be in same level)
@@ -46,7 +50,10 @@
             6. Balanced Binary          - (Difference of all the 'left subtree and right subtree' should be in [-1,0,1] only)  
 
 
-    Binary Search Tree (BST)
+    2. Binary Search Tree (BST)
+        - BST is an Binary Tree which can perform search operation in 'O(log n) Best case Time Complexity' or 'O(height) Worst case Time Complexity' 
+        - Left subtree elements are always lesser than parent node
+        - And Right subtree element are always greater than the parent node.
 
     Traversals:
         -> use inorder traversal for Binary Search Tree Validation          -   (implemented using stack or recursion)
@@ -54,6 +61,17 @@
         -> use postorder traversal for deletion or evaluation               -   (implemented using stack or recursion)
         -> use level order traversal for shortest path or tree width        -   (implemented using queue)
 
+    Problems:
+        Pre Order Traversal
+        In Order Traversal
+        Post Order Traversal
+        Level Order Traversal
+        Zig Zag Level Order Traversal
+        Level Order Bottom Traversal
+        Right Side View
+        Max Height
+        Is Symmetric
+        Is Balanced
 
 
 

@@ -194,6 +194,36 @@ class BinaryTree:
                     queue.append(node.right)
             
             result.append(level[-1])
+    
+    def left_side_view(self):
+        # Binary Tree Left Side View
+        '''
+            Given the root of a binary tree, imagine yourself standing on the left side of it, 
+            return the values of the nodes you can see ordered from top to bottom.
+        '''
+        result = self._left_side_view()
+        print(f'Left Side View : {result}')
+        
+    def _left_side_view(self):
+        result = []
+        
+        if self.root is None:
+            return result
+
+        queue = deque()
+        queue.append(self.root)
+        
+        while len(queue):
+            level = []
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                level.append(node.data)
+                if node.left is not None:
+                    queue.append(node.left)
+                if node.right is not None:
+                    queue.append(node.right)
+            
+            result.append(level[0])
         
         return result
 
@@ -222,6 +252,22 @@ class BinaryTree:
         
         print(f'Is Symmetric: {is_mirror(self.root.left,self.root.right)}')
         
+    def is_balanced(self):
+        result = self._is_balanced(self.root)
+        print(f'Is Balanced: {result if result == False else True}')
+    
+    def _is_balanced(self,node):
+        if node is None:
+            return 0
+        
+        left_height = self._is_balanced(node.left)
+        right_height = self._is_balanced(node.right)
+        
+        if abs(left_height - right_height) > 1:
+            return False
+        
+        return max(left_height,right_height) + 1
+        
         
         
 # root = Node(5)
@@ -232,6 +278,7 @@ class BinaryTree:
 # print(root.right.data)
 # print(root.left.right.data)
 arr = [6,4,5,1,2,8,0]
+# arr = [6,4,5,1,8]
 binary_tree = BinaryTree()
 binary_tree.build_tree(arr)
 '''
@@ -252,3 +299,4 @@ binary_tree.level_order_bottom_traversal()                  # Output: [[0, 2], [
 binary_tree.right_side_view()                               # Output: [6, 8, 5, 2]
 binary_tree.max_height()                                    # Output: 4
 binary_tree.is_symmetric()                                  # Output: False
+binary_tree.is_balanced()                                   # Output: False
