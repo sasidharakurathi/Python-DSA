@@ -3,7 +3,21 @@
     Two Pointers                                                                            -> Done
     Sliding Window                                                                          -> Done
 
-2. Stacks
+2. Recursions
+    Function or Method calling itself till a base condition is met is known as recursion.
+    
+    Problems:
+        N Natural Numbers
+        Factorial 
+        Fibonacci
+        Tribonacci
+        isPowerOfTwo
+        isPowerOfThree
+        GCD
+        LCM
+        Power(x, n)
+
+3. Stacks
     Stack                                                                                   -> Done
     Min Stack                                                                               -> Done
     Two Stacks in One Array                                                                 -> Done
@@ -11,31 +25,31 @@
     K Stacks in a Single Array
     Stack with Middle Element Access (Use Double Linked List)                               -> Done
 
-3. Queues
+4. Queues
     Linear Queue                                                                            -> Done
     Circular Queue                                                                          -> Done
     Deque (Double-Ended)                                                                    -> Done
     Queue using Stack                                                                       -> Done
 
-4. Hashing
+5. Hashing
     Hashmap (using dictionaries)                                                            -> Done
     Hashsets (using sets)                                                                   -> Done
     Hashing Strings                                                                         -> Done
     Custom Hashing for Tuples or Complex Key                                                -> Done
 
-5. Linked Lists
+6. Linked Lists
     Singly Linked List                                                                      -> Done
     Doubly Linked List                                                                      -> Done
     Circular Linked List                                                                    -> Done
     Unrolled Linked List
 
-6. Binary Search
+7. Binary Search
     Standard Binary Search – Find an element in a sorted array.                             -> Done
     Lower Bound / Upper Bound – First element ≥ target / First element > target.            -> Done
     Search Insert Position – Where to insert an element to keep array sorted.               -> Done
     First and Last Occurrence – Especially useful for duplicates.                           -> Done
 
-7. Tree
+8. Tree
 
     Resources:
         https://youtu.be/W2WQBT8qu3Q?si=_lWjKYoiRCcLU18O
@@ -78,14 +92,14 @@
         Validate Binary Search Tree
         Kth Smallest element in BST
 
-8. Heaps (Priority Queues)
+9. Heaps (Priority Queues)
     A Heap data structure is a Complete Binary Tree that satisfies the heap priority where any given node is:
         1. always greater than its child nodes  and the key of the root node is the largest among all other nodes. (Max Heap)
         2. always smaller than its child nodes  and the key of the root node is the smallest among all other nodes. (Min Heap)
         
 
 
-9. Back Tracking
-10. Graphs
-11. Dynamic Programming
-12. Tries
+10. Back Tracking
+11. Graphs
+12. Dynamic Programming
+13. Tries
