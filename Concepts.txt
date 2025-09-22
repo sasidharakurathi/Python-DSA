@@ -72,11 +72,19 @@
         Max Height
         Is Symmetric
         Is Balanced
-
-
-
+        Insert operation Binary Search Tree
+        Search operation Binary Search Tree
+        Delete operation Binary Search Tree
+        Validate Binary Search Tree
+        Kth Smallest element in BST
 
 8. Heaps (Priority Queues)
+    A Heap data structure is a Complete Binary Tree that satisfies the heap priority where any given node is:
+        1. always greater than its child nodes  and the key of the root node is the largest among all other nodes. (Max Heap)
+        2. always smaller than its child nodes  and the key of the root node is the smallest among all other nodes. (Min Heap)
+        
+
+
 9. Back Tracking
 10. Graphs
 11. Dynamic Programming

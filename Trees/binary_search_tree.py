@@ -99,6 +99,49 @@ class BinarySearchTree:
             temp = temp.left
         return temp
     
+    def validate_BST(self):
+        result = self._validate_BST(self.root, float('-inf'), float('inf'))     # float('-inf') gives negative infinity and float('inf') gives positive infinity 
+        if result:
+            print(f"Valid BST")
+        else:
+            print(f"Invalid BST")
+            
+        
+        
+    def _validate_BST(self,node, mn, mx):
+        if node is None:
+            return True
+        
+        if not (mn < node.data < mx):
+            return False
+        
+        validateLeft = self._validate_BST(node.left, mn, node.data)
+        validateRight = self._validate_BST(node.right, node.data, mx)
+        
+        return validateLeft and  validateRight
+
+    def kth_smallest(self, k):
+        '''
+            Given the root of a binary search tree, and an integer k, 
+            return the kth smallest value (1-indexed) of all the values of the nodes in the tree.
+        '''
+        
+        self.k = k
+        self.__kth_smallest_val = None
+        self._kth_smallest(self.root)
+        print(f'Kth Smallest Element: {self.__kth_smallest_val}')
+    
+    def _kth_smallest(self, node):
+        if node and self.__kth_smallest_val is None:
+            self._kth_smallest(node.left)
+            
+            self.k -= 1
+            if self.k == 0:
+                self.__kth_smallest_val = node.data
+                return
+            
+            self._kth_smallest(node.right)
+    
     def in_order_traversal(self):
         result = [] 
         self._in_order_traversal(result,self.root)
@@ -125,6 +168,8 @@ class BinarySearchTree:
 bst = BinarySearchTree()
 bst.build_tree([1,2,1.5,3,4,5,6])
 bst.in_order_traversal()
-bst.search(5)
-bst.delete(2)
-bst.in_order_traversal()
+# bst.search(5)
+# bst.delete(2)
+# bst.in_order_traversal()
+bst.validate_BST()                              # Valid BST
+bst.kth_smallest(3)                             # Output: 2
