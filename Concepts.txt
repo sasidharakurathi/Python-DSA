@@ -70,36 +70,52 @@
         - And Right subtree element are always greater than the parent node.
 
     Traversals:
-        -> use inorder traversal for Binary Search Tree Validation          -   (implemented using stack or recursion)
-        -> use preorder traversal for tree cloning or expression trees      -   (implemented using stack or recursion)
-        -> use postorder traversal for deletion or evaluation               -   (implemented using stack or recursion)
-        -> use level order traversal for shortest path or tree width        -   (implemented using queue)
+        -> use inorder traversal for Binary Search Tree Validation          -   (implemented using stack or recursion)      -> Done
+        -> use preorder traversal for tree cloning or expression trees      -   (implemented using stack or recursion)      -> Done
+        -> use postorder traversal for deletion or evaluation               -   (implemented using stack or recursion)      -> Done
+        -> use level order traversal for shortest path or tree width        -   (implemented using queue)                   -> Done
 
     Problems:
-        Pre Order Traversal
-        In Order Traversal
-        Post Order Traversal
-        Level Order Traversal
-        Zig Zag Level Order Traversal
-        Level Order Bottom Traversal
-        Right Side View
-        Max Height
-        Is Symmetric
-        Is Balanced
-        Insert operation Binary Search Tree
-        Search operation Binary Search Tree
-        Delete operation Binary Search Tree
-        Validate Binary Search Tree
-        Kth Smallest element in BST
+        Pre Order Traversal                                         -> Done
+        In Order Traversal                                          -> Done
+        Post Order Traversal                                        -> Done
+        Level Order Traversal                                       -> Done
+        Zig Zag Level Order Traversal                               -> Done
+        Level Order Bottom Traversal                                -> Done
+        Right Side View                                             -> Done
+        Max Height                                                  -> Done
+        Is Symmetric                                                -> Done
+        Is Balanced                                                 -> Done
+        Insert operation Binary Search Tree                         -> Done
+        Search operation Binary Search Tree                         -> Done
+        Delete operation Binary Search Tree                         -> Done
+        Validate Binary Search Tree                                 -> Done
+        Kth Smallest element in BST                                 -> Done
 
 9. Heaps (Priority Queues)
     A Heap data structure is a Complete Binary Tree that satisfies the heap priority where any given node is:
-        1. always greater than its child nodes  and the key of the root node is the largest among all other nodes. (Max Heap)
-        2. always smaller than its child nodes  and the key of the root node is the smallest among all other nodes. (Min Heap)
+        1. always greater than its child nodes  and the key of the root node is the largest among all other nodes. (Max Heap)       -> Done
+        2. always smaller than its child nodes  and the key of the root node is the smallest among all other nodes. (Min Heap)      -> Done
         
+10. Graphs
+    A graph data structure is a collection of nodes that have data and are connected to other nodes.
+
+    Graph Representation:
+        1. Edges                                                                                                            -> Done
+        2. Adjacency List                                                                                                   -> Done
+        3. Adjacency Matrix                                                                                                 -> Done
+
+    Graph Traversals:
+        1. Breadth First Search   --> (implemented using Queues)                -> (also need Adjacency Lists)              -> Done
+            -> It first traversals all of the neighbours for a node then moves to next node
+
+        2. Depth First Search     --> (implemented using Stacks or Recursions)  -> (also need Adjacency Lists)              -> Done
+            -> It first traversals the a full path and then chooses the next path recursively 
+
+    Problems:
+        1. Detect Cycle In an undirected graph. (implemented using DFS - recursion)                                         -> Done
 
 
-10. Back Tracking
-11. Graphs
-12. Dynamic Programming
+11. Dynamic Programming
+12. Back Tracking
 13. Tries
