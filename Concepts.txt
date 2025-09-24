@@ -112,8 +112,25 @@
         2. Depth First Search     --> (implemented using Stacks or Recursions)  -> (also need Adjacency Lists)              -> Done
             -> It first traversals the a full path and then chooses the next path recursively 
 
+    Weighted Graphs:
+        Shortest Path Algorithms:
+
+            1. Dijkstra Algorithm: (Single Source Shortest Path) + (Only Positive Weights)                                  -> Done
+                -> Dijkstra's Algorithm is a shortest path algorithm used to find the shortest path between two nodes in a graph
+                -> We use "priority queue" (min heap) to perform Dijkstra's Algorithm.
+                -> Dijkstra's Algorithm can not be performed on "Negative Weighted Graph".
+            2. Bellman Ford Algorithm: (Single Source Shortest Path) + (Both Positive and Negative Weights)
+            3. Floyd Warshall Algorithm: (All-pairs shortest path)
+
+        Minimum Spanning Tree:
+            1. Prim's Algorithm
+            2. Kruskal's Algorithm
+
     Problems:
         1. Detect Cycle In an undirected graph. (implemented using DFS - recursion)                                         -> Done
+        2. Network Delay Time. (implemented using "Dijkstra's Algorithm")                                                   -> Done
+
+
 
 
 11. Dynamic Programming
