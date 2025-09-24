@@ -123,12 +123,48 @@
             3. Floyd Warshall Algorithm: (All-pairs shortest path)
 
         Minimum Spanning Tree:
-            1. Prim's Algorithm
-            2. Kruskal's Algorithm
+            Definition:
+                A Minimum Spanning Tree of a connected, undirected graph is a subset of edges that:
+                    1. Connects all the vertices (i.e., forms a spanning tree)
+                    2. Has no cycles
+                    3. Minimizes the total edge weight
+            
+            Note:
+                If a graph as "n" nodes then it's corresponding spanning tree has "n-1" edges
+
+
+            1. Prim's Algorithm                                                                                             -> Done
+                -> implemented using "Min Heap" for efficiency .
+                -> It can be implemented using Adjacency Matrix or Adjacency List.
+
+            2. Kruskal's Algorithm                                                                                          -> Done
+                -> It can be implemented using Edges List
+                -> We sort the edges based on their Weights
+                -> Then we find the union of the "node1" and "node2" of a edge, such that they do not form a cycle
+                   It can be found by checking if the "parent node" of both "node1" and "node2" is same then they form a cycle. 
+
+        Topological Sorting:
+            Topological Sorting for Directed Acyclic Graph (DAG) is a linear ordering of vertices such that for every 
+            directed edge u-v (node1-node2), vertex u (node1) comes before v (node2) in the ordering.
+
+            1. Kahn's Algorithm                                                                                             -> Done
+                -> Compute "indegree" for all the nodes
+                -> Add all t he nodes with "indegree == 0" into the queue
+                -> while queue is not empty:
+                    -> pop a "node" from the queue
+                    -> add that "node" to the result list (topological_order)
+                    -> for each "neighbour" of that "node":
+                        -> decrement the indegree of the "neighbour"
+                        -> if indegree[neighbour] == 0 then add the "neighbour" to the queue
+                -> if the length of the topological_order less than total nodes then there is a cycle in the graph, just return False.
+                -> else return the topological_order
+
 
     Problems:
         1. Detect Cycle In an undirected graph. (implemented using DFS - recursion)                                         -> Done
         2. Network Delay Time. (implemented using "Dijkstra's Algorithm")                                                   -> Done
+        3. Course Schedule. (implemented using "Kahn's Algorithm")                                                          -> Done
+        3. Course Schedule II. (implemented using "Kahn's Algorithm")                                                          -> Done
 
 
 

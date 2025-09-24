@@ -1,7 +1,7 @@
 from graphs_representation import *
 from collections import deque
 
-# graph = ./graph_repr.png
+# graph = ./img/graph_repr.png
 n, e, edges = graph_repr()
 adj_list = build_adjacency_list(n, e, edges)
 

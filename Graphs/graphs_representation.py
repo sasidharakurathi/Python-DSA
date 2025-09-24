@@ -1,7 +1,7 @@
 
 
 def graph_repr():
-    # graph = ./graph_repr.png
+    # graph = ./img/graph_repr.png
     
     n = 6   # number of nodes
     e = 7   # number of edges

@@ -1,6 +1,7 @@
 from graphs_representation import *
 import heapq
 from collections import defaultdict
+from collections import deque
 
 n, e, edges = graph_repr()
 adj_list = build_adjacency_list(n, e, edges)
@@ -36,7 +37,7 @@ def network_delay_time(times, n, k):
         
         Input: times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
         Output: 2
-        Image: "./Network_Delay_Time_example_1.png"
+        Image: "./img/Network_Delay_Time_example_1.png"
         
     '''
     def build_graph(edges):
@@ -69,7 +70,78 @@ def network_delay_time(times, n, k):
 
     return -1
             
+def can_finish(num_courses, prerequisites):
+    '''
+        There are a total of num_courses courses you have to take, labeled from 0 to num_courses - 1.
+        You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
+
+        For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
+        Return true if you can finish all courses. Otherwise, return false.
+    ''' 
     
+    indegree = [0] * num_courses
+    adj_list = [[] for _ in range(num_courses)]
+    queue = deque()
+    topological_order = []
+    
+    for a, b in prerequisites:
+        # b -> a
+        indegree[a] += 1
+        adj_list[b].append(a)
+    
+    for src in range(num_courses):
+        if indegree[src] == 0:
+            queue.append(src)
+    
+    while queue:
+        front = queue.popleft()
+        topological_order.append(front)
+        
+        for neighbour in adj_list[front]:
+            indegree[neighbour] -= 1
+            if indegree[neighbour] == 0:
+                queue.append(neighbour)
+    
+    return len(topological_order) == num_courses
+
+def find_order(num_courses, prerequisites):
+    
+    '''
+        There are a total of num_courses courses you have to take, labeled from 0 to num_courses - 1. 
+        You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
+
+        For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
+        Return the ordering of courses you should take to finish all courses. 
+        If there are many valid answers, return any of them. If it is impossible to finish all courses, return an empty array.
+    '''
+    
+    indegree = [0] * num_courses
+    adj_list = [[] for _ in range(num_courses)]
+    queue = deque()
+    topological_order = []
+    
+    for a, b in prerequisites:
+        # b -> a
+        indegree[a] += 1
+        adj_list[b].append(a)
+    
+    for src in range(num_courses):
+        if indegree[src] == 0:
+            queue.append(src)
+    
+    while queue:
+        front = queue.popleft()
+        topological_order.append(front)
+        
+        for neighbour in adj_list[front]:
+            indegree[neighbour] -= 1
+            if indegree[neighbour] == 0:
+                queue.append(neighbour)
+    
+    if len(topological_order) == num_courses:
+        return topological_order
+    
+    return []
 
 
 if __name__ == "__main__":
@@ -81,7 +153,7 @@ if __name__ == "__main__":
     visited = [False] * n
     print(detect_cycle_in_graph(0, -1, [[1],[0,2],[1]], visited))                   # Output: False
     
-    # adj_list = ./no_cycle_graph.png
+    # adj_list = ./img/no_cycle_graph.png
     visited = [False] * n
     print(detect_cycle_in_graph(0, -1, [[1,3],[0,2],[1],[0],[0]], visited))         # Output: False
     
@@ -94,3 +166,16 @@ if __name__ == "__main__":
     print(f"{network_delay_time(times, n, k)}")                                     # Output: -1
     times, n, k = [[1,2,1],[2,3,2],[1,3,1]], 3, 2
     print(f"{network_delay_time(times, n, k)}")                                     # Output: -1
+    
+    # Course Schedule
+    num_courses, prerequisites = 2, [[1,0]]
+    print(f"{can_finish(num_courses, prerequisites)}")                               # Output: True
+    num_courses, prerequisites = 2, [[1,0],[0,1]]
+    print(f"{can_finish(num_courses, prerequisites)}")                               # Output: False
+    
+    num_courses, prerequisites = 2, [[1,0]]
+    print(f"{find_order(num_courses, prerequisites)}")                               # Output: [0,1]
+    num_courses, prerequisites = 4, [[1,0],[2,0],[3,1],[3,2]]
+    print(f"{find_order(num_courses, prerequisites)}")                               # Output: [0,2,1,3] or [0,1,2,3]
+    num_courses, prerequisites = 1, []
+    print(f"{find_order(num_courses, prerequisites)}")                               # Output: [0]

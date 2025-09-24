@@ -1,1 +1,1 @@
-adj_list = [[] * 10]
+prerequisites

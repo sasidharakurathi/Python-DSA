@@ -17,18 +17,18 @@ def dijkstra_algo(n,adj_list,start):
     # adjacency list using lists
     dist = [ float("inf") ] * n
     
-    min_heap = []       # [(node, edge_weight)]
+    min_heap = []       # [(edge_weight,node)] -> priority is based on "edge_weight"
     
     dist[start] = 0
-    heapq.heappush(min_heap, (start, dist[start]))  # (0,0)
+    heapq.heappush(min_heap, (dist[start],start))  # (0,0)
     
     while len(min_heap) > 0:
-        current_node , current_weight = heapq.heappop(min_heap)
+        current_weight,current_node  = heapq.heappop(min_heap)
         
         for node, weight in adj_list[current_node]:
             if current_weight + weight < dist[node]:
                 dist[node] = current_weight + weight
-                heapq.heappush(min_heap, (node,dist[node]))
+                heapq.heappush(min_heap, (dist[node],node))
     
     # print(f"{dist=}")
     return dist
@@ -51,15 +51,15 @@ def dijkstra_algo2(n,adj_list,start):
     dist = defaultdict(lambda: float("inf"))
     min_heap = []
     dist[start] = 0
-    heapq.heappush(min_heap, (start, dist[start]))
+    heapq.heappush(min_heap, (dist[start],start))
     
     while len(min_heap) > 0:
-        current_node, current_weight = heapq.heappop(min_heap)
+        current_weight,current_node = heapq.heappop(min_heap)
         
         for node, weight in adj_list[current_node]:
             if current_weight + weight < dist[node]:
                 dist[node] = current_weight + weight
-                heapq.heappush(min_heap, (node, dist[node]))
+                heapq.heappush(min_heap, (dist[node],node))
     
     # print(f"{dist.values()=}")
     return list(dist.values())
