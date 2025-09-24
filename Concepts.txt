@@ -164,7 +164,7 @@
         1. Detect Cycle In an undirected graph. (implemented using DFS - recursion)                                         -> Done
         2. Network Delay Time. (implemented using "Dijkstra's Algorithm")                                                   -> Done
         3. Course Schedule. (implemented using "Kahn's Algorithm")                                                          -> Done
-        3. Course Schedule II. (implemented using "Kahn's Algorithm")                                                          -> Done
+        4. Course Schedule II. (implemented using "Kahn's Algorithm")                                                       -> Done
 
 
 
