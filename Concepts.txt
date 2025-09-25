@@ -166,9 +166,28 @@
         3. Course Schedule. (implemented using "Kahn's Algorithm")                                                          -> Done
         4. Course Schedule II. (implemented using "Kahn's Algorithm")                                                       -> Done
 
-
-
-
 11. Dynamic Programming
+    ->  Dynamic Programming is a technique in computer programming that helps to efficiently solve a class of problems 
+        that have overlapping subproblems and optimal substructure property.
+
+    1. Memoization (Top Down Approach) -   aka "Memorization"
+        -> Memoization involves storing the results of expensive function calls and returning the cached result when the same inputs occur again.
+
+    2. Tabulation (Bottom Up Approach)
+        -> Tabulation solves the problem iteratively, starting from the base cases and building up to the final solution
+
+
+    Problems:
+        1. House Robber                                                                             -> Done
+        2. House Robber II                                                                          -> Done
+        3. Knapsack Problem
+            -> Fractional Knapsack -> (V/W) -> sort
+            -> 0/1 Knapsack         (Repeated item selection is not allowed)                        -> Done
+            -> Unbounded Knapsack   (Similar to 0/1 Knapsack but Repeated item selection allowed)   -> Done
+        4. Partition Equal Subset Sum   (using 0/1 Knapsack)                                        -> Done
+        5. Coin Change  (using Unbounded Knapsack)                                                  -> Done
+        6. Longest Common Subsequence                                                               -> Done
+
+
 12. Back Tracking
 13. Tries
