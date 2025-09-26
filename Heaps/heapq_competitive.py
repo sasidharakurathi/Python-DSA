@@ -77,7 +77,7 @@ if __name__ == "__main__":
 
     print(h)                                                        # Output: [1, 5, 3, 7]
     print(heapq.heappop(h))                                         # Output: 1
-    print(heapq.nlargest(2,h))                                      # Output: [7,5]s
+    print(heapq.nlargest(2,h))                                      # Output: [7,5]
     print(kth_larget_element([3,2,1,5,6,4], 2))                     # Output: 5
     print(kth_larget_element([3,2,3,1,2,4,5,5,6], 4))               # Output: 4
     print(last_stone_weight([2,7,4,1,8,1]))                         # Output: 1
